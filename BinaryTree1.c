@@ -11,8 +11,10 @@ int entry = 0;
 int main()
 {
     struct Node *root = NULL;
-    int D, cont = 1;
+    int D;
+    float cont = 1;
 
+    printf("\t# Binary Tree #\n\n");
 	while(1)
 	{
 		printf("Enter integer: ");
@@ -21,8 +23,8 @@ int main()
 		if(entry == 0)
 		{
             root = CreateTree(root, root, D);
-            printf("Continue entering(1) or not(0): ");
-            scanf("%d", &cont);
+            printf("Continue entering(any integer) or not(0): ");
+            scanf("%f", &cont);
         }
         else printf("Element already exists!\n");
         entry = 0;
