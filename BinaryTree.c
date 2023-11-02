@@ -7,7 +7,7 @@ void PrintTree(struct Node *, int); // Вывод дерева в консоль
 void SearchElement(struct Node *, int); // Поиск введённого элемента
 void Occurrence(struct Node *, int);    // Поиск числа вхождений элементов
 
-int finding = 0, entry = 0; // переменные наличия элемента и числа вхождений
+int finding, entry = 0; // переменные наличия элемента и числа вхождений
 
 
 int main()
@@ -41,10 +41,12 @@ int main()
 	break;
 
 	case 1: // Первая задача: поиск элемента, введённого с клавиатуры
+        finding = 0;
         printf("Enter the element you wont to search: ");
         scanf("%d", &element);
         SearchElement(root, element);
-        if(finding == 0) printf("Element not found!\n");
+        if(finding == 1) printf("Element found!\n");
+        else if(finding == 0) printf("Element not found!\n");
 	break;
 
 	case 2: // Вторая задача: число вхождений элемента
@@ -65,9 +67,9 @@ int main()
 
 struct Node
 {
-    int data;
-    struct Node* left;
-    struct Node* right;
+    int data;   // Данные
+    struct Node* left;  // Указатель на левого потомка
+    struct Node* right; // Указатель на правого потомка
 };
 
 struct Node *CreateTree(struct Node *root, struct Node *pointer, int data)
@@ -120,11 +122,7 @@ void SearchElement(struct Node *pointer, int element)
 
 	SearchElement(pointer->right, element);
 
-	if(pointer -> data == element)
-	{
-        printf("Element found!\n");
-        finding = 1;
-    }
+	if(pointer -> data == element) finding = 1;
 
 	SearchElement(pointer->left, element);
 }
